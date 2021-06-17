@@ -1,3 +1,5 @@
-variable "bucket_name" {
-  type = string
+variable "buckets" {
+  type = list(object({
+    name = string
+  }))
 }

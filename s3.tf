@@ -1,9 +1,7 @@
-resource "aws_s3_bucket" "b" {
-  bucket = var.bucket_name
-  acl    = "private"
+module "s3_buckets" {
+  source = "./modules/s3"
 
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
+  for_each = var.buckets
+
+  bucket_name = each.value.name
 }
